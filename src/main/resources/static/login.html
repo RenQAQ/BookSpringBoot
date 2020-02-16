@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>用户名:</td>
+                <td><input type="text" name="userName"></td>
+            </tr>
+            <tr>
+                <td>密码:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="登录" onclick="login()"></td>
+            </tr>
+        </table>
+    </form>
+<script src="jquery-1.8.3.js"></script>
+<script>
+  function login() {
+      var userName = $("input[name=userName]").val();
+      var password = $("input[name=password]").val();
+      $.ajax({
+          url:"login",
+          dataType:"json",
+          type:"post",
+          data:{"userName":userName,"password":password},
+          success:function (data) {
+              if(data!=null){
+                  location.href='bookList'
+              }else{
+                  alert("用户名或密码错误")
+              }
+          }
+      })
+  }
+</script>
+</body>
+</html>

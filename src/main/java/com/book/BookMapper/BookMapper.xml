@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.book.BookMapper.BookMapper">
+    <select id="bookList" resultType="com.book.pojo.Book">
+        select * from book_info limit #{from},#{pageSize}
+    </select>
+    <select id="count" resultType="int">
+        select count(book_id) from book_info
+    </select>
+</mapper>

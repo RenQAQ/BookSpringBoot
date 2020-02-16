@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>图书编号</td>
+            <td>图书分类</td>
+            <td>图书名称</td>
+            <td>作者</td>
+            <td>出版社</td>
+            <td>操作</td>
+        </tr>
+
+    </table>
+    <input type="hidden" value="" id="pageIndex">
+    <input type="hidden" value="" id="pageCount">
+    <a href="javascript:;" onclick="ajax(1)">首页</a>
+    <a href="javascript:;" onclick="ajax(paeIndex()-1)">上一页</a>
+    <a href="javascript:;" onclick="ajax(paeIndex()+1)">下一页</a>
+    <a href="javascript:;" onclick="ajax(pageCount())">末页</a>
+
+</body>
+<script src="jquery-1.8.3.js"></script>
+<script>
+    $(function () {
+        ajax();
+    })
+    function paeIndex() {
+        return  $("#pageIndex").val();
+    }
+    function pageCount() {
+        return  $("#pageCount").val();
+    }
+    function ajax(pageIndex1) {
+       /* var pageIndex = $("input[type=hidden]").val();*/
+        var is_Bows;
+        $.ajax({
+            url:'bookLists',
+            dataType:'json',
+            type:"get",
+            data:{'pageIndex':pageIndex1},
+            success:function (data) {
+                $("tr").next().remove();
+                $("#pageIndex").val(data.pageIndex);
+                $("#pageCount").val(data.pageCount);
+                for(var i = 0;i<data.bookList.length;i++){
+                    is_Bows=data.bookList[i].is_borrow==1?"已借阅":"未借阅"
+                    $("table").append("<tr><td>"+data.bookList[i].book_code+"</td>"+
+                        "<td>"+data.bookList[i].book_type+"</td>"+
+                        "<td>"+data.bookList[i].book_name+"</td>"+
+                        "<td>"+data.bookList[i].book_atuthor+"</td>"+
+                        "<td>"+data.bookList[i].publish_press+"</td>"+
+                        "<td>"+is_Bows+"</td></tr>");
+                }
+
+            },error:function () {
+                alert("其它异常");
+            }
+        })
+    }
+</script>
+</html>
