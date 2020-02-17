@@ -6,113 +6,110 @@
     <script src="vue.js"></script>
 </head>
 <body>
-<div id="app">
-    <h1>{{name}}</h1>
-    <!--这里， v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素-->。
-    <!-- <p v-if="seen">现在你看到我了</p>
-     <template v-if="ok">
-         <h1>菜鸟教程</h1>
-         <p>学的不是技术，是梦想！</p>
-         <p>哈哈，打字好辛苦啊！！！</p>
-     </template>-->
-    <p v-if="seen">现在你看到我了</p>
-    <p v-if="ok">张兴好蠢</p>
-    <!--参数在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：-->
-    <pre><a v-bind:href="url">菜鸟教程</a></pre>
-    <!--点击事件绑定到方法-->
-    <pre><a v-on:click="doSomething">菜鸟教程</a></pre>
-    <!--双向数据绑定-->
-    <p>{{message}}</p>
-    <input v-model="message">
-    <!-- <input type="checkbox" v-model="message">-->
-    <input type="radio" name="zx" v-model="checked">
-    <input type="radio" name="zx">
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!--这里， v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素-->。
+       <!-- <p v-if="seen">现在你看到我了</p>
+        <template v-if="ok">
+            <h1>菜鸟教程</h1>
+            <p>学的不是技术，是梦想！</p>
+            <p>哈哈，打字好辛苦啊！！！</p>
+        </template>-->
+        <p v-if="seen">现在你看到我了</p>
+        <p v-if="ok">张兴好蠢</p>
+        <!--参数在指令后以冒号指明。例如， v-bind 指令被用来响应地更新 HTML 属性：-->
+        <pre><a v-bind:href="url">菜鸟教程</a></pre>
+        <!--点击事件绑定到方法-->
+        <pre><a v-on:click="doSomething">菜鸟教程</a></pre>
+        <!--双向数据绑定-->
+        <p>{{message}}</p>
+        <input v-model="message">
+       <!-- <input type="checkbox" v-model="message">-->
+        <input type="radio" name="zx" v-model="checked">
+        <input type="radio" name="zx">
 
-    <!--随机数判断是否大于0.6-->
-    <div v-if="Num > 0.5">
-        sorry
-        随机数{{Num}}
-    </div>
-    <div v-else>
-        Not sorry
-        随机数{{Num}}
-    </div>
-    <!--v-else-if 判断-->
-    <div v-if="type === 'A'">
-        A
-    </div>
-    <div v-else-if="type === 'B'">
-        B
-    </div>
-    <div v-else-if="type === 'C'">
-        C
-    </div>
-    <div v-else>
-        D
-    </div>
-    <!--使用v-show根据条件来显示元素-->
-    <div v-show="ok">哈哈</div>
-    <!--循环-->
-    <div>
-        <ol>
-            <li v-for="site in sites">
-                {{site.name}}
-            </li>
-        </ol>
-    </div>
-    <ul>
-        <template v-for="site in sites">
-            <li>{{site.name}}</li>
-        </template>
-    </ul>
-    <!--迭代对象-->
-    <div>
-        <ol>
-            <li v-for="value in Object">
-                {{value}}
-            </li>
-        </ol>
-    </div>
-    <!--迭代对象显示键值对-->
-    <div>
-        <ol>
-            <li v-for="(value,key) in Object">
-                {{key}}:{{value}}
-            </li>
-        </ol>
-    </div>
-    <!--迭代对象显示键值对 显示下标-->
-    <div>
-        <ol>
-            <li v-for="(value,key,index) in Object">
-                {{key}}:{{value}}:{{index}}
-            </li>
-        </ol>
-    </div>
-    <!--循环迭代整数-->
-    <span v-for="n in 10">
+        <!--随机数判断是否大于0.6-->
+        <div v-if="Num > 0.5">
+            sorry
+            随机数{{Num}}
+        </div>
+        <div v-else>
+            Not sorry
+            随机数{{Num}}
+        </div>
+        <!--v-else-if 判断-->
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            D
+        </div>
+        <!--使用v-show根据条件来显示元素-->
+        <div v-show="ok">哈哈</div>
+        <!--循环-->
+        <div>
+            <ol>
+                <li v-for="site in sites">
+                    {{site.name}}
+                </li>
+            </ol>
+        </div>
+        <ul>
+            <template v-for="site in sites">
+                <li>{{site.name}}</li>
+            </template>
+        </ul>
+        <!--迭代对象-->
+        <div>
+            <ol>
+                <li v-for="value in Object">
+                    {{value}}
+                </li>
+            </ol>
+        </div>
+        <!--迭代对象显示键值对-->
+        <div>
+            <ol>
+                <li v-for="(value,key) in Object">
+                    {{key}}:{{value}}
+                </li>
+            </ol>
+        </div>
+        <!--迭代对象显示键值对 显示下标-->
+        <div>
+            <ol>
+                <li v-for="(value,key,index) in Object">
+                    {{key}}:{{value}}:{{index}}
+                </li>
+            </ol>
+        </div>
+        <!--循环迭代整数-->
+        <span v-for="n in 10">
             {{n}}
         </span>
 
-    <div v-for="n in 9">
-        <b v-for="m in n">
-            {{m}}*{{n}}={{m*n}}
-        </b>
+        <div v-for="n in 9">
+            <b v-for="m in n">
+                {{m}}*{{n}}={{m*n}}
+            </b>
+        </div>
     </div>
-    <!--反转字符串-->
-    <p>原始字符串:{{message}}</p>
-    <p>计算后反转字符串:{{reversedMessage}}</p>
-</div>
 
 <script>
-    var app =  new Vue({
+   var app =  new Vue({
         el:"#app",
         data:{
             name:'张兴isDog',
             seen:true,
             ok:true,
             url:'http://www.runoob.com',
-            message:'Runoob',
+            message:'张兴',
             checked:"许倜",
             type:'A',
             Num:Math.random(),
@@ -128,15 +125,10 @@
                 yang:'杨慧'
             }
         },methods:{
-            doSomething:function () {
-                location.href='http://www.runoob.com'
-            }
-        },computed:{
-            reversedMessage:function () {
-                // `this` 指向 vm 实例
-                return this.message.split('').reverse().join('')
-            }
-        }
+           doSomething:function () {
+               location.href='http://www.runoob.com'
+           }
+       }
     })
 </script>
 </body>
